@@ -110,9 +110,6 @@ function handleEvent(event) {
       });
     }
     if (event.message.text[0] == '@' && event.message.text.length == 7) {
-      exec.execFile('php', ['./getpage.php'], (err, stdout, stderr) => {
-        //console.log(stdout);
-      });
       exec.execFile('php', ['./querytoti.php'], (err, stdout, stderr) => {
         const jsonTables = new HtmlTableToJson(stdout);
         var arrFound = jsonTables.results[0].filter(function(item) {
@@ -127,9 +124,6 @@ function handleEvent(event) {
   // --------------- grup Tower Provider, query Toti
   } else if (groupTP.indexOf(event.source.groupId) > -1 ) {  
     if (useradmin.indexOf(event.source.userId) > -1 && event.message.text[0] == '@' && event.message.text.length == 7) {
-      exec.execFile('php', ['./getpage.php'], (err, stdout, stderr) => {
-        //console.log(stdout);
-      });
       exec.execFile('php', ['./querytoti.php'], (err, stdout, stderr) => {
         const jsonTables = new HtmlTableToJson(stdout);
         var arrFound = jsonTables.results[0].filter(function(item) {
