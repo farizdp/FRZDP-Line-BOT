@@ -1,9 +1,6 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 const Sequelize = require('sequelize');
-const rp = require('request-promise');
-const request = require('request');
-const cheerio = require('cheerio');
 const exec = require('child_process');
 const HtmlTableToJson = require('html-table-to-json');
 
