@@ -44,7 +44,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
-    .catch((e)=>{
+    .catch((e) => {
       console.log(e);
     });
 });
@@ -55,13 +55,13 @@ function handleEvent(event) {
     var input = event.message.text.split("\n");
     if (input.length >= 8) {
       input[0] = input[0].replace(/(^\s+|\s+$)/g,'').toLowerCase();
-      input[1] = input[1].slice(input[1].indexOf(':')+2,input[1].length); //site
-      input[2] = input[2].slice(input[2].indexOf(':')+2,input[2].length); //problem
-      input[3] = input[3].slice(input[3].indexOf(':')+2,input[3].length); //activity
-      input[4] = input[4].slice(input[4].indexOf(':')+2,input[4].length); //result
-      input[5] = input[5].slice(input[5].indexOf(':')+2,input[5].length); //team
-      input[6] = input[6].slice(input[6].indexOf(':')+2,input[6].length); //operational
-      input[7] = input[7].slice(input[7].indexOf(':')+2,input[7].length); //note
+      input[1] = input[1].slice(input[1].indexOf(':') + 2, input[1].length); //site
+      input[2] = input[2].slice(input[2].indexOf(':') + 2, input[2].length); //problem
+      input[3] = input[3].slice(input[3].indexOf(':') + 2, input[3].length); //activity
+      input[4] = input[4].slice(input[4].indexOf(':') + 2, input[4].length); //result
+      input[5] = input[5].slice(input[5].indexOf(':') + 2, input[5].length); //team
+      input[6] = input[6].slice(input[6].indexOf(':') + 2, input[6].length); //operational
+      input[7] = input[7].slice(input[7].indexOf(':') + 2, input[7].length); //note
       if (input[0] == "izin masuk") {
         db.sync()
           .then(() => Report.create({
